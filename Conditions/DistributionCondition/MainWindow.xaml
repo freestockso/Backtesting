@@ -1,0 +1,32 @@
+﻿<Window x:Class="DistributionCondition.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DistributionCondition"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="Distribute Analyse" Height="350" Width="525">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="259*"/>
+        </Grid.RowDefinitions>
+        <telerik:RadToolBar Grid.ColumnSpan="2">
+            <TextBlock>Start:</TextBlock>
+            <telerik:RadDateTimePicker  SelectedValue="{Binding StartTime,Mode=TwoWay}" Margin="3" Width="120" ToolTip="Start Time"/>
+            <TextBlock>End</TextBlock>
+            <telerik:RadDateTimePicker  SelectedValue="{Binding EndTime,Mode=TwoWay}" Margin="3" Width="120" ToolTip="End Time"/>
+            <TextBlock Margin="5">Type:</TextBlock>
+            <ComboBox Margin="5" MinWidth="80" ItemsSource="{Binding ProcessTypeList}" SelectedItem="{Binding CurrentProcessType,Mode=TwoWay}"></ComboBox>
+
+            <telerik:RadToolBarSeparator />
+
+            <Button Margin="5" Command="{Binding DistributeCommand}">Analyse</Button>
+        </telerik:RadToolBar>
+
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BackTestingInterface.MarketDataEventArgs" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackTestingInterface.IndicatorEventArgs" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>IIndicator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackTestingInterface.MoneyTrace" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>IPortfolio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackTestingInterface.SensorEventArgs" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISensor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackTestingInterface.OrderEventArgs" Collapsed="true">
+    <Position X="0.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackTestingInterface.MoneyEventArgs" Collapsed="true">
+    <Position X="1" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAEAAAAA=</HashCode>
+      <FileName>IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BackTestingInterface.IDataSource">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAKAAEAAEAAAAAACAIAAgAAAAIEAAAAIAAIA=</HashCode>
+      <FileName>IDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IIndicator">
+    <Position X="9.5" Y="5.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAAAEAAAIABABAAAAABAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>IIndicator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IInstrument" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAgAAAACACAAAAIAAACACAAAEAAAAAAAABAAA=</HashCode>
+      <FileName>IInstrument.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IOrder" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgQAAAEAZAAABAAAEAgABAACAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>IOrder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IPortfolio">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QgAIAAAQAAAQQBAACAAMQAAAAEAEEAABAAAAAAADAAA=</HashCode>
+      <FileName>IPortfolio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IProject">
+    <Position X="12" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QQIoIBAEgDAAAAAAAAAAAASQAAAAAAAiMAABAECAAhg=</HashCode>
+      <FileName>IProject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.ISensor">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAICAgAAIAAEAIAAAAAYA=</HashCode>
+      <FileName>ISensor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.ITestEntityObject" Collapsed="true">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAQAAAAEAAAAAAAAAAAAAAAAAAEAAAhA=</HashCode>
+      <FileName>ITestEntityObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.ITradeGate" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQA=</HashCode>
+      <FileName>ITradeGate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IStrategy">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IgAAAAQAAAAAQBAAAAEBCAGAAAAACACAAAgAAAAIIAA=</HashCode>
+      <FileName>IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="BackTestingInterface.OrderType" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>IOrder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BackTestingInterface.OrderMode" Collapsed="true">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IOrder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BackTestingInterface.OrderStatus" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAgQAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>IOrder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BackTestingInterface.ValueChangeBy" Collapsed="true">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPortfolio.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BackTestingInterface.ProjectStatus" Collapsed="true">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>IProject.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BackTestingInterface.SimulateDirection" Collapsed="true">
+    <Position X="1" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="BackTestingInterface.MarketDataEventHandler" Collapsed="true">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="BackTestingInterface.TestFinished" Collapsed="true">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="BackTestingInterface.IndicatorEventHandler" Collapsed="true">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>IIndicator.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="BackTestingInterface.ValueChangedEventHandler" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>IPortfolio.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="BackTestingInterface.SensorEventHandler" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISensor.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="BackTestingInterface.OrderEventHandler" Collapsed="true">
+    <Position X="4.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="BackTestingInterface.MoneyEventHandler" Collapsed="true">
+    <Position X="3" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

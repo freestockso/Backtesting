@@ -1,0 +1,7 @@
+﻿代码:Ticker
+名称:Name
+市盈(动):PE
+流通市值:MarketValue
+市净率:PB
+细分行业:Industory
+地区:Region

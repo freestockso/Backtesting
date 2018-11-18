@@ -1,0 +1,35 @@
+﻿<Application x:Class="UUBacktesting.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:UUBacktesting"
+             xmlns:control="clr-namespace:UUBacktesting.Control"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate x:Key="booleanControl" >
+            <CheckBox IsChecked="{Binding Value,Mode=TwoWay}" Margin="5,2" 
+                      ></CheckBox>
+        </DataTemplate>
+        <DataTemplate x:Key="numControl">
+            <telerik:RadNumericUpDown Value="{Binding Value,Mode=TwoWay}" Minimum="{Binding MinValue}" Maximum="{Binding MaxValue}"
+                   NumberDecimalDigits="0" IsInteger="True" Margin="5,2"></telerik:RadNumericUpDown>
+        </DataTemplate>
+        <DataTemplate x:Key="decControl">
+            <telerik:RadNumericUpDown Value="{Binding Value,Mode=TwoWay}"  Minimum="{Binding MinValue}" Maximum="{Binding MaxValue}"
+                    Margin="5,2"></telerik:RadNumericUpDown>
+        </DataTemplate>
+        <DataTemplate x:Key="selectionControl">
+            <ComboBox SelectedItem="{Binding Value,Mode=TwoWay}" ItemsSource="{Binding ValidValueList}"  Margin="5,2" 
+                      ></ComboBox>
+        </DataTemplate>
+        <DataTemplate x:Key="timeControl">
+            <telerik:RadDateTimePicker SelectedValue="{Binding Value,Mode=TwoWay}"  DisplayDateStart="{Binding MinTime}" 
+                      DisplayDateEnd="{Binding MaxTime}" Margin="5,2"></telerik:RadDateTimePicker>
+        </DataTemplate>
+        <DataTemplate x:Key="strControl">
+            <TextBox Text="{Binding Value,Mode=TwoWay}" Margin="5,2"></TextBox>
+        </DataTemplate>
+        <control:ParameterTemplateSelector x:Key="parameterSelector" ></control:ParameterTemplateSelector>
+    </Application.Resources>
+</Application>

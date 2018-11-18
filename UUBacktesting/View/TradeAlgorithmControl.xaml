@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="UUBacktesting.View.TradeAlgorithmControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UUBacktesting.View"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" Margin="5"
+             Height="158" Width="600">
+    <Border BorderBrush="Blue" BorderThickness="2" CornerRadius="2">
+        <Grid AllowDrop="True" Drop="Object_Drop">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="29*"/>
+                <RowDefinition Height="28*"/>
+                <RowDefinition Height="29*"/>
+                <RowDefinition Height="30*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="110*"/>
+                <ColumnDefinition Width="88*"/>
+                <ColumnDefinition Width="110*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Margin="3" >股票(Instrument):</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="3" Grid.Column="1" Text="{Binding TargetInstrumentTicker,Mode=TwoWay}"></TextBox>
+            <TextBlock VerticalAlignment="Center" Margin="3" Grid.Row="1">信号(Signal):</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="3" Grid.Column="1" Grid.Row="1" Text="{Binding TargetSignal,Mode=TwoWay}"></TextBox>
+            <TextBlock VerticalAlignment="Center" Margin="3" Grid.Row="2">开始时间(Start):</TextBlock>
+            <telerik:RadDateTimePicker Margin="3" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" SelectedValue="{Binding StartTime,Mode=TwoWay}"></telerik:RadDateTimePicker>
+            <TextBlock VerticalAlignment="Center" Margin="3" Grid.Row="3" >结束时间(End):</TextBlock>
+            <telerik:RadDateTimePicker Margin="3" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" SelectedValue="{Binding EndTime,Mode=TwoWay}"></telerik:RadDateTimePicker>
+            <TextBlock VerticalAlignment="Center" Margin="3" Grid.Row="1" Grid.Column="2">阈值(Threshold):</TextBlock>
+            <telerik:RadNumericUpDown Margin="3" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Value="{Binding Threshold,Mode=TwoWay}"></telerik:RadNumericUpDown>
+            <TextBlock VerticalAlignment="Center" Margin="3" Grid.Row="2" Grid.Column="2">百分比限制(Percent Limit):</TextBlock>
+            <telerik:RadNumericUpDown Margin="3" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Value="{Binding PercentLimit,Mode=TwoWay}" Maximum="1" Minimum="0"></telerik:RadNumericUpDown>
+            <TextBlock VerticalAlignment="Center" Margin="3" Grid.Row="3" Grid.Column="2">时间限制(Times Limit):</TextBlock>
+            <telerik:RadNumericUpDown Margin="3" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Value="{Binding MaxOrderTimes,Mode=TwoWay}" IsInteger="True"></telerik:RadNumericUpDown>
+            <TextBlock VerticalAlignment="Center" Margin="3" Grid.Column="2" >订单类型(OrderType):</TextBlock>
+            <ComboBox Margin="3" VerticalAlignment="Center" Grid.Column="3" ItemsSource="{Binding OrderTypeList}" SelectedItem="{Binding TargetOrderType,Mode=TwoWay}"></ComboBox>
+            <!--<TextBlock VerticalAlignment="Center" Margin="3" Grid.Row="4" Grid.RowSpan="2" >Signal List:</TextBlock>
+            <ComboBox Margin="3" MinHeight="75" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" 
+                     ItemsSource="{Binding ConditionNameList}" SelectedItem="{Binding CurrentConditionName,Mode=TwoWay}" 
+                     Grid.RowSpan="2"  AllowDrop="True" Drop="Condition_Drop"></ComboBox>
+            <TextBox VerticalAlignment="Center" Margin="3" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Text="{Binding CurrentConditionName,Mode=TwoWay}"></TextBox>
+            <StackPanel Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2" >
+
+                <Button Margin="5" VerticalAlignment="Center" Command="{Binding AddCurrentValidConditionNameCommand}">Add Condition</Button>
+                <Button Margin="5" VerticalAlignment="Center" Command="{Binding DeleteCurrentConditionNameCommand}">Delete Condition</Button>
+            </StackPanel>-->
+        </Grid>
+    </Border>
+</UserControl>

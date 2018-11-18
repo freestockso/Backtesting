@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="UUBacktesting.View.Distribute.DistributeTrendControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UUBacktesting.View.Distribute"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="700">
+    <telerik:RadBusyIndicator IsBusy="{Binding IsBusy}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37"/>
+                <RowDefinition Height="307*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85*"/>
+                <ColumnDefinition Width="283*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" ToolTip="Show Mode">
+                <CheckBox FontSize="10" Margin="1" VerticalAlignment="Center" IsChecked="{Binding IsTimeMode,Mode=TwoWay}">时间(Time)</CheckBox>
+                <CheckBox  FontSize="10" Margin="1" VerticalAlignment="Center" IsChecked="{Binding IsMarketMode,Mode=TwoWay}">市值(Market)</CheckBox>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding LendList}" Margin="0,0,5,0" Grid.Row="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsVisible,Mode=TwoWay}"></CheckBox>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <GridSplitter VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="5" Background="Gray" Grid.RowSpan="2"></GridSplitter>
+            <telerik:RadCartesianChart x:Name="MainChart" Grid.Column="1" Grid.RowSpan="2"  >
+                <telerik:RadCartesianChart.Behaviors>
+                    <telerik:ChartPanAndZoomBehavior ZoomMode="Both" PanMode="Both"></telerik:ChartPanAndZoomBehavior>
+                </telerik:RadCartesianChart.Behaviors>
+
+                <telerik:RadCartesianChart.Series>
+                </telerik:RadCartesianChart.Series>
+
+                <telerik:RadCartesianChart.Grid>
+                    <telerik:CartesianChartGrid MajorXLinesRenderMode="All" MajorLinesVisibility="Y"/>
+                </telerik:RadCartesianChart.Grid>
+
+                <telerik:RadCartesianChart.VerticalAxis>
+                    <telerik:LinearAxis ></telerik:LinearAxis>
+                </telerik:RadCartesianChart.VerticalAxis>
+            </telerik:RadCartesianChart>
+
+        </Grid>
+    </telerik:RadBusyIndicator>
+</UserControl>

@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="UUBacktesting.View.PortfolioControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UUBacktesting.View"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="315*"/>
+            <RowDefinition Height="248*"/>
+        </Grid.RowDefinitions>
+        <telerik:RadToolBar >
+
+            <Button Command="{Binding DeletePositionCommand}" Content="删除持仓(Delete Position)"/>
+            <Button Command="{Binding ResetTradeListCommand}" Margin="3">清除交易记录(Reset Trade List)</Button>
+            <telerik:RadToolBarSeparator />
+            <Button Command="{Binding AddMoneyCommand}" Content="新增资金(Add Money)"/>
+            <Button Command="{Binding DeleteMoneyCommand}" Content="删除资金(Delete Money)"/>
+            <telerik:RadToolBarSeparator />
+            <Button Command="{Binding SaveOrigenalCommand}" Margin="3">保存原始状态(Save Origenal)</Button>
+            <Button Command="{Binding LoadOrigenalCommand}" Margin="3">加载原始状态(Load Origenal)</Button>
+            <telerik:RadToolBarSeparator />
+            <Button Command="{Binding SaveCommand}" Margin="3">保存(Save)</Button>
+            <Button Command="{Binding RefreshCommand}" Content="刷新(Refresh)" Margin="5"></Button>
+        </telerik:RadToolBar>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock>Money:</TextBlock>
+            <telerik:RadGridView Grid.Row="1" ItemsSource="{Binding AccountList}" SelectedItem="{Binding CurrentMoney,Mode=TwoWay}">
+
+            </telerik:RadGridView>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock>Position:</TextBlock>
+            <telerik:RadGridView Name="PositionTable" Grid.Row="1" ItemsSource="{Binding PositionList}"  RowIndicatorVisibility="Collapsed" ShowGroupPanel="False"
+                                 SelectedItem="{Binding CurrentPosition,Mode=TwoWay}" AllowDrop="True" Drop="RadGridView_Drop" 
+                                
+                                 RowActivated="RadGridView_RowActivated"
+                                 AutoGenerateColumns="False">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn  IsReadOnly="True" Header="代号(Ticker)" DataMemberBinding="{Binding InstrumentTicker}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn  IsReadOnly="True" Header="名称(Name)" DataMemberBinding="{Binding InstrumentName}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn Header="数量(Shares)" DataMemberBinding="{Binding Shares}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn Header="价格(Price)" DataMemberBinding="{Binding CurrentPrice}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn  IsReadOnly="True" Header="成本(Cost)" DataMemberBinding="{Binding Cost}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn IsReadOnly="True" Header="盈亏(Pnl)" DataMemberBinding="{Binding Pnl}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn Header="币种(Currency)" DataMemberBinding="{Binding CurrentCurrency}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn Header="最大值(Max)" DataMemberBinding="{Binding MaxPrice}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn Header="最小值(Min)" DataMemberBinding="{Binding MinPrice}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn  IsReadOnly="True" Header="数据时间(Data Time)" DataMemberBinding="{Binding DataTime}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn  IsReadOnly="True" Header="持仓时间(Keep Time)" DataMemberBinding="{Binding KeepTime}" MinWidth="50"/>
+                </telerik:RadGridView.Columns>
+                <telerik:RadGridView.RowDetailsTemplate>
+                    <DataTemplate>
+                        <telerik:RadGridView Margin="15,5" ItemsSource="{Binding TradeTrace}" BorderThickness="0" BorderBrush="{x:Null}"
+                                             IsFilteringAllowed="False"
+                                             Background="{x:Null}" ColumnBackground="{x:Null}" RowIndicatorVisibility="Collapsed" ShowGroupPanel="False">
+                        </telerik:RadGridView>
+                    </DataTemplate>
+                </telerik:RadGridView.RowDetailsTemplate>
+            </telerik:RadGridView>
+        </Grid>
+    </Grid>
+
+</UserControl>

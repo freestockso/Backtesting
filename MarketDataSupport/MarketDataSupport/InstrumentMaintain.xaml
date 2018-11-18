@@ -1,0 +1,46 @@
+﻿<Window x:Class="MarketDataSupport.InstrumentMaintain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MarketDataSupport"
+         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="Instrument Maintain" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="285*"/>
+        </Grid.RowDefinitions>
+        <telerik:RadToolBar>
+            <Button Margin="5" Command="{Binding LoadFromDBCommand}">从数据库加载(Load From DB)</Button>
+            <Button Margin="5" Command="{Binding LoadFromFileCommand}">从文件加载(Load From File)</Button>
+            <ComboBox ItemsSource="{Binding SeperateCharList}" SelectedItem="{Binding CurrentSeperateChar,Mode=TwoWay}" Margin="5"></ComboBox>
+            <Button Margin="5" Command="{Binding SaveToDBCommand}">保存到数据库(Save To DB)</Button>
+            <Button Margin="5" Command="{Binding SaveToFileCommand}">保存到文件(Save To File)</Button>
+            <telerik:RadToolBarSeparator></telerik:RadToolBarSeparator>
+            <Button Margin="5" Command="{Binding ClearCommand}">清空(Clear)</Button>
+            <Button Margin="5" Command="{Binding NewCommand}">新建(New)</Button>
+            <Button Margin="5" Command="{Binding DeleteCommand}">删除(Delete)</Button>
+            <Button Command="{Binding OpenCurrentInstrumentDataCommand}" Margin="5">打开股票详情(Open Instrument)</Button>
+        </telerik:RadToolBar>
+        <telerik:RadGridView Grid.Row="1" ItemsSource="{Binding InstrumentList}" SelectedItem="{Binding CurrentInstrument,Mode=TwoWay}" AutoGenerateColumns="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Ticker" DataMemberBinding="{Binding Ticker}" Width="58"/>
+                <telerik:GridViewDataColumn Header="Name" DataMemberBinding="{Binding Name}" Width="100"/>
+                <telerik:GridViewDataColumn Header="Memo" DataMemberBinding="{Binding Memo}" Width="120"/>
+                <telerik:GridViewDataColumn Header="Industory" DataMemberBinding="{Binding Industory }" Width="100"/>
+                <telerik:GridViewDataColumn Header="Region " DataMemberBinding="{Binding Region }" Width="100"/>
+                <telerik:GridViewDataColumn Header="PE" DataMemberBinding="{Binding PE}" Width="80"/>
+                <telerik:GridViewDataColumn Header="PB" DataMemberBinding="{Binding PB}" Width="80"/>
+                <telerik:GridViewDataColumn Header="MarketValue" DataMemberBinding="{Binding MarketValue}" Width="80"/>
+                <telerik:GridViewDataColumn Header="CurrentPrice" DataMemberBinding="{Binding CurrentPrice}" Width="80"/>
+                <telerik:GridViewDataColumn Header="Currency" DataMemberBinding="{Binding Currency}" Width="80"/>
+                <telerik:GridViewDataColumn Header="Margin" DataMemberBinding="{Binding Margin}" Width="80"/>
+                <telerik:GridViewDataColumn Header="OrderFixedCost" DataMemberBinding="{Binding OrderFixedCost}" Width="80"/>
+                <telerik:GridViewDataColumn Header="OrderPercentCost" DataMemberBinding="{Binding OrderPercentCost}" Width="80"/>
+
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</Window>

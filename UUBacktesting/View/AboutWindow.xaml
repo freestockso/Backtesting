@@ -1,0 +1,38 @@
+﻿<Window x:Class="UUBacktesting.View.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UUBacktesting.View"
+        mc:Ignorable="d"
+        Title="About UU Backtesting Platfirm" Height="210" Width="550" WindowStartupLocation="CenterScreen" 
+        WindowStyle="SingleBorderWindow" ShowInTaskbar="False" ResizeMode="NoResize" FontSize="18" Icon="/UUBacktesting;component/Images/about.png"  >
+
+        <Grid Canvas.Left="10" Canvas.Top="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150*"/>
+                <ColumnDefinition Width="333*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Margin="20,5" HorizontalAlignment="Left" VerticalAlignment="Center">Name:</TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1">Backtesting tool for UU ( 2014 )</TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1">Work Path:</TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="12" Grid.Row="1" Grid.Column="1" Text="{Binding WorkPath}" ToolTip="{Binding WorkPath}"></TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2">Last Build Time:</TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="12" Grid.Row="2" Grid.Column="1" Text="{Binding LastBuildTime}"></TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3">Version:</TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1">7.3</TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4">Support EMail:</TextBlock>
+            <TextBlock Margin="20,5" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1">
+           <Hyperlink NavigateUri="mailto:lynxliu2002@163.com"> lynxliu2002@163.com</Hyperlink></TextBlock>
+        </Grid>
+
+</Window>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BackTestingInterface.MarketDataCacke" Collapsed="true">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAIAAgAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>IDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackTestingInterface.SerialInfo" Collapsed="true">
+    <Position X="9" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>ISerialSupport.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BackTestingInterface.IProject" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIoIAAEBiAAEgAEAAAggAAAAAEAAAAFIAAAAAEAAAA=</HashCode>
+      <FileName>IProject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IAnalyseProject" Collapsed="true">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAgAAAAAAEAAAIAAAAAIAQAQAIAA=</HashCode>
+      <FileName>IAnalyseProject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IBacktestingProject" Collapsed="true">
+    <Position X="3.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RgAAAAAACACAAACBIgEAAAABgAAgAAJgCAAFgAAEsQA=</HashCode>
+      <FileName>IBacktestingProject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.ICondition" Collapsed="true">
+    <Position X="1.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAABBAAAAgAAAFAAAAEAAAAAACBAIAAECEAAAAAAAAA=</HashCode>
+      <FileName>ICondition.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IDataSource" Collapsed="true">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACgAAAAAAAAAAEAAACAAAAEAAAgAAAEAAAAAIA=</HashCode>
+      <FileName>IDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IRiskControl" Collapsed="true">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAACAAAAAAAAAIAEAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>IRiskControl.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IPositionControl" Collapsed="true">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAABAACIECEAAAIAQgAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>IRiskControl.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IStrategy" Collapsed="true">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAARAAAAAAAAAAAABIAAAAAAAAgAEAAAA=</HashCode>
+      <FileName>IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.ITradeGate" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQA=</HashCode>
+      <FileName>ITradeGate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.ISerialSupport" Collapsed="true">
+    <Position X="2.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>ISerialSupport.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IParameterSupportObject" Collapsed="true">
+    <Position X="2.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAACAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>IParameterSupportObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IOriginalSupport" Collapsed="true">
+    <Position X="4.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>IOriginalSupport.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BackTestingInterface.IWorkObject" Collapsed="true">
+    <Position X="6.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAEAAABA=</HashCode>
+      <FileName>IWorkObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

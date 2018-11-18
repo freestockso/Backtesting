@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="UUBacktesting.View.BacktestingProjectSummaryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:UUBacktesting.View"
+             mc:Ignorable="d" 
+             Height="100" Width="300">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDoubleClick">
+            <i:InvokeCommandAction Command="{Binding OpenCommand}" CommandParameter="{Binding ElementName=controlborder}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <telerik:RadContextMenu.ContextMenu>
+        <telerik:RadContextMenu IconColumnWidth="0" >
+            <telerik:RadMenuItem Command="{Binding OpenCommand}" Header="Open"></telerik:RadMenuItem>
+            <telerik:RadMenuItem Command="{Binding DeleteCommand}" Header="Delete"></telerik:RadMenuItem>
+            <telerik:RadMenuItem IsSeparator="True" />
+            <telerik:RadMenuItem Command="{Binding StartCommand}" Header="Start"></telerik:RadMenuItem>
+            <telerik:RadMenuItem Command="{Binding PauseCommand}" Header="Pause"></telerik:RadMenuItem>
+            <telerik:RadMenuItem Command="{Binding StopCommand}" Header="Stop"></telerik:RadMenuItem>
+        </telerik:RadContextMenu>
+    </telerik:RadContextMenu.ContextMenu>
+    <Border Name="controlborder" Background="{Binding SelectedBrush}" BorderThickness="3" BorderBrush="{Binding StatusBrush}" CornerRadius="5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="71*"/>
+                <ColumnDefinition Width="71*"/>
+                <ColumnDefinition Width="71*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+                <RowDefinition Height="15"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Source="/UUBacktesting;component/Images/backtesting project.png" Margin="-30,-21,79,23" Width="50" Height="50"></Image>
+            <TextBlock Text="{Binding Name}" Margin="25,5,5,5" ToolTip="名称(Name)"></TextBlock>
+            <TextBlock Text="{Binding CurrentValue}" Margin="5" Grid.Column="1" ToolTip="当前市值(Current Value)"></TextBlock>
+            <TextBlock Text="{Binding Pnl}" Grid.Row="1"  Margin="5" ToolTip="收益(Pnl)"></TextBlock>
+            <TextBlock Text="{Binding StandardPnl}" Grid.Row="1"  Margin="5" Grid.Column="1" Foreground="Blue" ToolTip="标准收益(Standard Pnl)"></TextBlock>
+            <TextBlock Text="{Binding Efficiency}" Grid.Column="2"  Margin="5" Foreground="Blue" ToolTip="收益率(Efficiency)"></TextBlock>
+            <TextBlock Text="{Binding MaxLost}" Grid.Row="1" Grid.Column="2" Margin="5" Foreground="Red" ToolTip="最大损失(Max Lost)"></TextBlock>
+            <ProgressBar Grid.Row="2" Grid.ColumnSpan="3" Height="15" Value="{Binding FinishPercent,Mode=OneWay}" ToolTip="{Binding ProcessInfo}" Minimum="0" Maximum="1" Margin="5"></ProgressBar>
+
+        </Grid>
+    </Border>
+
+</UserControl>

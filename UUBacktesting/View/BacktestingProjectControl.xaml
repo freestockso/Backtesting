@@ -1,0 +1,228 @@
+﻿<UserControl x:Class="UUBacktesting.View.BacktestingProjectControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:UUBacktesting.ViewModel"
+             xmlns:local="clr-namespace:UUBacktesting.View"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800" >
+    <UserControl.Resources>
+        <local:OrderTypeBrushConvert x:Key="ordertypeConverter"/>
+
+        <sys:String x:Key="openFormat">Open: {0}</sys:String>
+        <sys:String x:Key="highFormat">High: {0}</sys:String>
+        <sys:String x:Key="lowFormat">Low: {0}</sys:String>
+        <sys:String x:Key="closeFormat">Close: {0}</sys:String>
+        <sys:String x:Key="volumeFormat">Volume: {0}</sys:String>
+        <sys:String x:Key="priceFormat">Price: {0}</sys:String>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="12"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <telerik:RadTabControl TabOrientation="Horizontal" OverflowMode="Scroll" >
+
+
+            <!--<Grid Width="210" Height="35" Margin="5,5,5,5" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+
+            <Thumb Background="LightBlue" DragDelta="DragDelta" Grid.ColumnSpan="2"  />
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="5">Legend</TextBlock>
+            <ComboBox Grid.Column="1" Margin="7" SelectedItem="{Binding CurrentInstrument,Mode=TwoWay}" ItemsSource="{Binding InstrumentList}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>-->
+
+            <telerik:RadTabItem Header="图(Chart)">
+                <Grid>
+
+                    <telerik:RadCartesianChart x:Name="MainChart"   >
+                        <telerik:RadCartesianChart.Resources>
+                            <telerik:LinearAxis x:Key="AdditionalVerticalAxis" HorizontalLocation="Right" Title="Value" LabelFitMode="Rotate"/>
+                        </telerik:RadCartesianChart.Resources>
+                        <telerik:RadCartesianChart.Behaviors>
+                            <telerik:ChartPanAndZoomBehavior ZoomMode="Both" PanMode="Both"></telerik:ChartPanAndZoomBehavior>
+                            <telerik:ChartTrackBallBehavior  ShowTrackInfo="True"/>
+                            <telerik:ChartCrosshairBehavior />
+
+                        </telerik:RadCartesianChart.Behaviors>
+
+                        <telerik:RadCartesianChart.Series>
+                            <telerik:LineSeries ItemsSource="{Binding CurrentValueList}"
+                                                Stroke="Orange" StrokeThickness="5"
+                                                CategoryBinding="Time" ValueBinding="DoubleValue" 
+                                                 VerticalAxis="{StaticResource AdditionalVerticalAxis}">
+                                <telerik:LineSeries.TrackBallInfoTemplate>
+
+                                    <DataTemplate />
+                                </telerik:LineSeries.TrackBallInfoTemplate>
+                            </telerik:LineSeries>
+                            <telerik:LineSeries ItemsSource="{Binding StandardValueList}"
+                                                Stroke="Green" StrokeThickness="1"
+                                                CategoryBinding="Time" ValueBinding="DoubleValue" 
+                                                 VerticalAxis="{StaticResource AdditionalVerticalAxis}">
+                                <telerik:LineSeries.TrackBallInfoTemplate>
+
+                                    <DataTemplate />
+                                </telerik:LineSeries.TrackBallInfoTemplate>
+                            </telerik:LineSeries>
+                            
+                            <telerik:CandlestickSeries ItemsSource="{Binding CurrentInstrumentMarketDataList}"
+                                                OpenBinding="Open"
+                                           HighBinding="High"
+                                           LowBinding="Low"
+                                           CloseBinding="Close"
+                                           CategoryBinding="Time"
+                                            ToolTip="Market Data"
+                                                       >
+                                
+                                <telerik:CandlestickSeries.TrackBallInfoTemplate>
+                                    <DataTemplate >
+                                        <StackPanel Background="Transparent">
+                                            <Border Background="Yellow">
+                                                <TextBlock Text="{Binding Path=DataPoint.Category}"/>
+                                            </Border>
+                                            <TextBlock Text="{Binding Path=DataPoint.Open, StringFormat={StaticResource openFormat}}" />
+                                            <TextBlock Text="{Binding Path=DataPoint.High, StringFormat={StaticResource highFormat}}" />
+                                            <TextBlock Text="{Binding Path=DataPoint.Low, StringFormat={StaticResource lowFormat}}" />
+                                            <TextBlock Text="{Binding Path=DataPoint.Close, StringFormat={StaticResource closeFormat}}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </telerik:CandlestickSeries.TrackBallInfoTemplate>
+                            </telerik:CandlestickSeries>
+                            <telerik:BarSeries ItemsSource="{Binding CurrentInstrumentMarketDataList}"
+
+                                                CategoryBinding="Time" ValueBinding="Volume" >
+                                <telerik:BarSeries.TrackBallInfoTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=DataPoint.Value, StringFormat={StaticResource volumeFormat}}" />
+                                    </DataTemplate>
+                                </telerik:BarSeries.TrackBallInfoTemplate>
+                                <telerik:BarSeries.VerticalAxis>
+                                    <telerik:LinearAxis HorizontalLocation="Right" Visibility="Hidden" ElementBrush="Blue" Minimum="{Binding MinVolumeAxisValue}" Maximum="{Binding MaxVolumeAxisValue}"/>
+                                </telerik:BarSeries.VerticalAxis>
+                            </telerik:BarSeries>
+                            <!--<telerik:LineSeries ItemsSource="{Binding CurrentIndicatorValueList}"
+                                                Stroke="LightGray" StrokeThickness="2"
+                                                CategoryBinding="Time" ValueBinding="MainValue" 
+                                                 />-->
+                            <telerik:PointSeries ItemsSource="{Binding CurrentInstrumentOrderList}" CategoryBinding="OrderTime" ValueBinding="Price" >
+                                <telerik:PointSeries.PointTemplate>
+                                    <DataTemplate>
+                                        <Ellipse Width="10" Height="10" Fill="{Binding DataItem.OrderDirection,Converter={StaticResource ordertypeConverter}}" ></Ellipse>
+                                    </DataTemplate>
+                                </telerik:PointSeries.PointTemplate>
+                                
+                            </telerik:PointSeries>
+
+                        </telerik:RadCartesianChart.Series>
+
+                        <telerik:RadCartesianChart.Grid>
+                            <telerik:CartesianChartGrid MajorXLinesRenderMode="All" MajorLinesVisibility="Y"/>
+                        </telerik:RadCartesianChart.Grid>
+                        <telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:DateTimeCategoricalAxis LabelFormat="MM/dd HH:mm"></telerik:DateTimeCategoricalAxis>
+                        </telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:LinearAxis Minimum="{Binding MinPrice}" Maximum="{Binding MaxPrice}">
+                                
+                            </telerik:LinearAxis>
+                        </telerik:RadCartesianChart.VerticalAxis>
+
+
+                    </telerik:RadCartesianChart>
+                    <!--<GridSplitter Grid.Row="1" Height="5" BorderBrush="Red" HorizontalAlignment="Stretch" Background="Gray" VerticalAlignment="Top"/>
+                    <telerik:RadCartesianChart Grid.Row="1" Margin="0,5,0,0" x:Name="VolumeChart" Zoom="{Binding Zoom, Mode=TwoWay}" PanOffset="{Binding PanOffset, Mode=TwoWay}"  >
+                        <telerik:RadCartesianChart.Behaviors>
+                            <telerik:ChartPanAndZoomBehavior ZoomMode="Both" PanMode="Both"></telerik:ChartPanAndZoomBehavior>
+                            <telerik:ChartTooltipBehavior  HorizontalOffset="-11" VerticalOffset="-50"/>
+                        </telerik:RadCartesianChart.Behaviors>
+                        <telerik:RadCartesianChart.TooltipTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Path Data="M-1236,-441 L-1208,-441 L-1208,-424 L-1228,-424 L-1230.5,-420 L-1233,-424 L-1236,-424 z"
+                                        Stretch="Fill" Fill="#FFFFFFFF" Stroke="#FF767676" StrokeThickness="1" />
+                                    <TextBlock Margin="6,4,6,10" FontSize="11" Text="{Binding Value, StringFormat=\{0:N2\}}" />
+                                </Grid>
+                            </DataTemplate>
+                        </telerik:RadCartesianChart.TooltipTemplate>
+                        <telerik:RadCartesianChart.Indicators>
+                            <telerik:MovingAverageIndicator ItemsSource="{Binding CurrentInstrumentMarketDataList}"
+                                                ValueBinding="Volume"
+                                                CategoryBinding="Time"
+                                                Stroke="Red"
+                                                StrokeThickness="3"
+                                                Period="{Binding AverageVolume}" >
+
+                            </telerik:MovingAverageIndicator>
+                        </telerik:RadCartesianChart.Indicators>
+                        <telerik:RadCartesianChart.Series>
+                            <telerik:BarSeries ItemsSource="{Binding CurrentInstrumentMarketDataList}"
+
+                                                CategoryBinding="Time" ValueBinding="Volume" />
+
+
+                        </telerik:RadCartesianChart.Series>
+
+                        <telerik:RadCartesianChart.Grid>
+                            <telerik:CartesianChartGrid MajorXLinesRenderMode="All" MajorLinesVisibility="XY"/>
+                        </telerik:RadCartesianChart.Grid>
+                        <telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:DateTimeCategoricalAxis LabelFormat="MM/dd HH:mm" ></telerik:DateTimeCategoricalAxis>
+                        </telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:LinearAxis Minimum="0" ></telerik:LinearAxis>
+                        </telerik:RadCartesianChart.VerticalAxis>
+                    </telerik:RadCartesianChart>-->
+
+                    <!--<GridSplitter Grid.Row="2" Height="5" BorderBrush="Red" HorizontalAlignment="Stretch" Background="Gray" VerticalAlignment="Top"/>
+                    <telerik:RadCartesianChart Grid.Row="2" Margin="0,5,0,0"  x:Name="IndicatorChart" Zoom="{Binding Zoom, Mode=TwoWay}" PanOffset="{Binding PanOffset, Mode=TwoWay}" >
+
+                        <telerik:RadCartesianChart.Behaviors>
+                            <telerik:ChartPanAndZoomBehavior ZoomMode="Both" PanMode="Both"></telerik:ChartPanAndZoomBehavior>
+
+                        </telerik:RadCartesianChart.Behaviors>
+                        <telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:CategoricalAxis ></telerik:CategoricalAxis>
+                        </telerik:RadCartesianChart.HorizontalAxis>
+
+                        <telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:LinearAxis HorizontalAlignment="Right"></telerik:LinearAxis>
+                        </telerik:RadCartesianChart.VerticalAxis>
+
+                    </telerik:RadCartesianChart>-->
+
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="价值轨迹(Value Trace)">
+                <telerik:RadGridView ItemsSource="{Binding CurrentValueList}"></telerik:RadGridView>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="标准价值轨迹(Standard Value Trace)">
+                <telerik:RadGridView ItemsSource="{Binding StandardValueList}"></telerik:RadGridView>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="当前价值轨迹(Current Market Data)">
+                <telerik:RadGridView ItemsSource="{Binding CurrentInstrumentMarketDataList}"></telerik:RadGridView>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="订单(Order)">
+                <telerik:RadGridView ItemsSource="{Binding OrderList}"></telerik:RadGridView>
+            </telerik:RadTabItem>
+            <!--<telerik:RadTabItem Header="Current Indicator Data">
+                <telerik:RadGridView ItemsSource="{Binding CurrentIndicatorValueList}"></telerik:RadGridView>
+            </telerik:RadTabItem>-->
+        </telerik:RadTabControl>
+        <GridSplitter Grid.Row="1" VerticalAlignment="Top" Height="2" Background="Orange"></GridSplitter>
+        <ProgressBar Grid.Row="1" Margin="2,2,2,0" Minimum="0" Maximum="1" Value="{Binding FinishPercent,Mode=OneWay}" ToolTip="{Binding ProcessInfo}"/>
+    </Grid>
+</UserControl>

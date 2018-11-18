@@ -1,0 +1,47 @@
+﻿<Window x:Class="MarketDataSupport.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MarketDataSupport"
+         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="Market Data Maintain" Height="350" Width="1200" Icon="data maintance.png">
+    <telerik:RadBusyIndicator IsBusy="{Binding IsBusy}" BusyContent="{Binding BusyContent}" IsIndeterminate="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="285*"/>
+        </Grid.RowDefinitions>
+        <telerik:RadToolBar>
+                <Button Margin="5" Command="{Binding DataAutoFillCommand}">市场数据导入(Market Data Fill)</Button>
+                <CheckBox Margin="3" IsChecked="{Binding IsDataAppend,Mode=TwoWay}">Add</CheckBox>
+                <telerik:RadToolBarSeparator />
+                <Button Command="{Binding InstrumentMaintainCommand}" Margin="5">股票信息维护(Instrument Maintain)</Button>
+            <telerik:RadToolBarSeparator />
+            <TextBlock Margin="5">股票(Instrument):</TextBlock>
+            <TextBox MinWidth="120" Margin="5" Text="{Binding InstrumentTicker,Mode=TwoWay}"></TextBox>
+            <TextBlock Margin="5">开始(Start):</TextBlock>
+            <telerik:RadDateTimePicker  SelectedValue="{Binding StartTime,Mode=TwoWay}" Margin="3" Width="120" ToolTip="Start Time"/>
+            <TextBlock Margin="5">结束(End):</TextBlock>
+            <telerik:RadDateTimePicker  SelectedValue="{Binding EndTime,Mode=TwoWay}" Margin="3" Width="120" ToolTip="End Time"/>
+            <Button Margin="5" Command="{Binding LoadFromDBCommand}">从数据库加载(Load From DB)</Button>
+                <Button Margin="5" Command="{Binding SaveToDBCommand}">保存到数据库(Save To DB)</Button>
+            <telerik:RadToolBarSeparator />
+            <Button Margin="5" Command="{Binding LoadFromFileCommand}">从文件加载(Load From File)</Button>
+            <Button Margin="5" Command="{Binding SaveToFileCommand}">保存到文件(Save To File)</Button>
+                <ComboBox ItemsSource="{Binding SeperateCharList}" SelectedItem="{Binding CurrentSeperateChar,Mode=TwoWay}" Margin="5"></ComboBox>
+            <telerik:RadToolBarSeparator></telerik:RadToolBarSeparator>
+                <Button Command="{Binding OpenCurrentInstrumentDataCommand}" Margin="5">打开股票(Open Instrument)</Button>
+            <Button Margin="5" Command="{Binding ClearCommand}">清除(Clear)</Button>
+            <Button Margin="5" Command="{Binding NewCommand}">新建(New)</Button>
+            <Button Margin="5" Command="{Binding DeleteCommand}">删除(Delete)</Button>
+            <telerik:RadToolBarSeparator></telerik:RadToolBarSeparator>
+            
+                <Button Margin="5" Command="{Binding ShowAutoFillLogCommand}">数据导入日志(Fill Log)</Button>
+            </telerik:RadToolBar>
+        
+        <telerik:RadGridView Grid.Row="1" ItemsSource="{Binding MarketDataList}" SelectedItem="{Binding CurrentMarketData,Mode=TwoWay}"></telerik:RadGridView>
+        </Grid>
+    </telerik:RadBusyIndicator>
+</Window>

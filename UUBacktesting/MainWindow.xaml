@@ -1,0 +1,120 @@
+﻿<Window x:Class="UUBacktesting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:UUBacktesting"
+        xmlns:control="clr-namespace:UUBacktesting.View"
+        xmlns:vm="clr-namespace:UUBacktesting.ViewModel"
+        mc:Ignorable="d"
+        Title="回测系统(Back testing system)" Height="550" Width="1280"  Closing="Window_Closing" Icon="Images/pisces.png">
+    <Window.Resources>
+        <local:ProjectItemTemplateSelector x:Key="mytemplate_selector" />
+        <DataTemplate  x:Key="backtestingProjectTemplate">
+            <control:BacktestingProjectSummaryControl  MouseLeftButtonDown="PlayerStatusControl_MouseLeftButtonDown"></control:BacktestingProjectSummaryControl>
+        </DataTemplate>
+        <DataTemplate x:Key="analyseProjectTemplate">
+            <control:AnalyseProjectSummaryControl  MouseLeftButtonDown="PlayerStatusControl_MouseLeftButtonDown"></control:AnalyseProjectSummaryControl>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="17*"/>
+        </Grid.RowDefinitions>
+        <telerik:RadToolBar>
+            <telerik:RadSplitButton  Command="{Binding CreateBacktestingProjectCommand}" Margin="5">
+                新建(Create)
+                <telerik:RadSplitButton.DropDownContent>
+                    <telerik:RadContextMenu >
+                        <telerik:RadMenuItem IsCheckable="False" Header="Create Backtesting Project" Command="{Binding CreateBacktestingProjectCommand}" HorizontalAlignment="Stretch">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="Images/backtesting project.png" ></Image>
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem IsCheckable="False" Header="Create Analyse Project" Command="{Binding CreateAnalyseProjectCommand}" HorizontalAlignment="Stretch">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="Images/analyse project.png" ></Image>
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                    </telerik:RadContextMenu>
+                </telerik:RadSplitButton.DropDownContent>
+            </telerik:RadSplitButton>
+
+            <Button Command="{Binding SaveCommand}" Margin="5">
+                保存(Save)
+            </Button>
+            <Button Command="{Binding LoadCommand}" Margin="5">
+                打开(Open)
+            </Button>
+            <Button Command="{Binding RunCommand}" Margin="5">
+                Run
+            </Button>
+            <telerik:RadToolBarSeparator />
+            <CheckBox Margin="5,9" IsChecked="{Binding OperateAllProject,Mode=TwoWay}" VerticalAlignment="Center">全部(All)</CheckBox>
+            <Button Margin="5,2" Command="{Binding StartCommand}" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/start.png" VerticalAlignment="Center"></Image>
+                    <TextBlock VerticalAlignment="Center">启动(Start)</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button  Margin="5,2"  Command="{Binding PauseCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/pause.png" VerticalAlignment="Center"></Image>
+                    <TextBlock VerticalAlignment="Center">暂停(Pause)</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="5,2"  Command="{Binding StopCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/stop.png" VerticalAlignment="Center"></Image>
+                    <TextBlock VerticalAlignment="Center">停止(Stop)</TextBlock>
+                </StackPanel>
+            </Button>
+            <telerik:RadToolBarSeparator />
+            <Button Margin="5" Command="{Binding CreateSimulateProjectCommand}">克隆项目(Clone Project)</Button>
+            <telerik:RadNumericUpDown Margin="5" Value="{Binding CreateProjectNum,Mode=TwoWay}" NumberDecimalDigits="0" MinWidth="50"></telerik:RadNumericUpDown>
+            <CheckBox  Margin="5,9" IsChecked="{Binding AutoOpenProject,Mode=TwoWay}" VerticalAlignment="Center">自动打开(Auto Open)</CheckBox>
+            <telerik:RadToolBarSeparator />
+            <Button  Margin="5"  Command="{Binding SaveWorkspaceCommand}">保存工作区(Save Workspace)</Button>
+            <Button Margin="5"  Command="{Binding LoadWorkspaceCommand}">打开工作区(Open Workspace)</Button>
+            <telerik:RadToolBarSeparator />
+            <Button Command="{Binding ShowLogCommand}" Margin="5,2">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/log.png" VerticalAlignment="Center"  Width="32" Height="32"></Image>
+                    <TextBlock VerticalAlignment="Center">日志(Log)</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding MarketDataManageCommand}" Margin="5,2">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/data maintenance.png"  Width="32" Height="32" VerticalAlignment="Center"></Image>
+                    <TextBlock VerticalAlignment="Center">数据维护(Data Maintain)</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding DistributeAnalyseCommand}" Margin="5,2">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/distribute.png"  Width="32" Height="32" VerticalAlignment="Center"></Image>
+                    <TextBlock VerticalAlignment="Center">数据分布(Distribute)</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding AboutCommand}" Margin="5,2">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/about.png" Width="32" Height="32" VerticalAlignment="Center"></Image>
+                    <TextBlock VerticalAlignment="Center">关于(About)</TextBlock>
+                </StackPanel>
+            </Button>
+        </telerik:RadToolBar>
+        <ItemsControl ItemsSource="{Binding ProjectList}"  Grid.Row="1" ItemTemplateSelector="{StaticResource mytemplate_selector}">
+            <ItemsControl.ItemsPanel >
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" Margin="10" ItemHeight="120" ItemWidth="350"/>
+                </ItemsPanelTemplate>
+
+            </ItemsControl.ItemsPanel>
+
+        </ItemsControl>
+
+
+    </Grid>
+
+</Window>

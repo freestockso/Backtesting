@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99D9443F-2995-4239-AC64-55CEFC021831}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UUBacktesting</RootNamespace>
+    <AssemblyName>UUBacktesting</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TA-Lib-Core, Version=1.0.4998.21369, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TA-Lib.0.5.0.3\lib\TA-Lib-Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\DLL\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart">
+      <HintPath>..\DLL\Telerik.Windows.Controls.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data">
+      <HintPath>..\DLL\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking">
+      <HintPath>..\DLL\Telerik.Windows.Controls.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView">
+      <HintPath>..\DLL\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\DLL\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\DLL\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\DLL\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Control\ParameterControl.xaml.cs">
+      <DependentUpon>ParameterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="TelerikChartViewHelper.cs" />
+    <Compile Include="TelerikDockingHelper.cs" />
+    <Compile Include="TelerikGridViewHelper.cs" />
+    <Compile Include="ViewModel\AllInstrumentWindowViewModel.cs" />
+    <Compile Include="EntityObserver.cs" />
+    <Compile Include="ViewModel\AnalyseProjectSummaryViewModel.cs" />
+    <Compile Include="ViewModel\AnalyseProjectViewModel.cs" />
+    <Compile Include="ViewModel\ConditionViewModel.cs" />
+    <Compile Include="ViewModel\DistributeAnalyseViewModel.cs" />
+    <Compile Include="ViewModel\Distribute\DimentionAnalyseControlViewModel.cs" />
+    <Compile Include="ViewModel\Distribute\DistributeSurfaceViewModel.cs" />
+    <Compile Include="ViewModel\Distribute\DistributeTrendViewModel.cs" />
+    <Compile Include="ViewModel\Distribute\DistributeViewModel.cs" />
+    <Compile Include="ViewModel\Distribute\SpotControlViewModel.cs" />
+    <Compile Include="ViewModel\Distribute\SurfaceControlViewModel.cs" />
+    <Compile Include="ViewModel\IEditableViewModel.cs" />
+    <Compile Include="ViewModel\INotifiedViewModel.cs" />
+    <Compile Include="ViewModel\InstrumentViewModel.cs" />
+    <Compile Include="ViewModel\LogViewModel.cs" />
+    <Compile Include="ViewModel\ParameterObjectViewModelBase.cs" />
+    <Compile Include="ViewModel\PortfolioViewModel.cs" />
+    <Compile Include="ViewModel\BacktestingProjectSummaryViewModel.cs" />
+    <Compile Include="ViewModel\ProjectSummaryViewModelBase.cs" />
+    <Compile Include="ViewModel\BacktestingProjectViewModel.cs" />
+    <Compile Include="ViewModel\ProjectViewModelBase.cs" />
+    <Compile Include="ViewModel\RiskControlViewModel.cs" />
+    <Compile Include="ViewModel\StandardStrategyViewModel.cs" />
+    <Compile Include="ViewModel\StrategyViewModel.cs" />
+    <Compile Include="ViewModel\TradeAlgorithmViewModel.cs" />
+    <Compile Include="View\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AllInstrumentWindow.xaml.cs">
+      <DependentUpon>AllInstrumentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AnalyseProjectControl.xaml.cs">
+      <DependentUpon>AnalyseProjectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AnalyseProjectSummaryControl.xaml.cs">
+      <DependentUpon>AnalyseProjectSummaryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AnalyseProjectWindow.xaml.cs">
+      <DependentUpon>AnalyseProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BacktestingProjectControl.xaml.cs">
+      <DependentUpon>BacktestingProjectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BacktestingProjectSummaryControl.xaml.cs">
+      <DependentUpon>BacktestingProjectSummaryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BacktestingProjectWindow.xaml.cs">
+      <DependentUpon>BacktestingProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConditionControl.xaml.cs">
+      <DependentUpon>ConditionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataSourceControl.xaml.cs">
+      <DependentUpon>DataSourceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DistributeAnalyseWindow.xaml.cs">
+      <DependentUpon>DistributeAnalyseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Distribute\DimentionAnalyseControl.xaml.cs">
+      <DependentUpon>DimentionAnalyseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Distribute\DistributeControl.xaml.cs">
+      <DependentUpon>DistributeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Distribute\DistributeSurfaceControl.xaml.cs">
+      <DependentUpon>DistributeSurfaceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Distribute\DistributeTrendControl.xaml.cs">
+      <DependentUpon>DistributeTrendControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Distribute\SpotControl.xaml.cs">
+      <DependentUpon>SpotControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Distribute\SurfaceControl.xaml.cs">
+      <DependentUpon>SurfaceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InstrumentControl.xaml.cs">
+      <DependentUpon>InstrumentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogControl.xaml.cs">
+      <DependentUpon>LogControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PortfolioControl.xaml.cs">
+      <DependentUpon>PortfolioControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PredicateControl.xaml.cs">
+      <DependentUpon>PredicateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RiskControlView.xaml.cs">
+      <DependentUpon>RiskControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StandardStrategyControl.xaml.cs">
+      <DependentUpon>StandardStrategyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StrategyControl.xaml.cs">
+      <DependentUpon>StrategyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TradeAlgorithmControl.xaml.cs">
+      <DependentUpon>TradeAlgorithmControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TradeGateControl.xaml.cs">
+      <DependentUpon>TradeGateControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Control\ParameterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AllInstrumentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AnalyseProjectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AnalyseProjectSummaryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AnalyseProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BacktestingProjectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BacktestingProjectSummaryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BacktestingProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConditionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataSourceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DistributeAnalyseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Distribute\DimentionAnalyseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Distribute\DistributeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Distribute\DistributeSurfaceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Distribute\DistributeTrendControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Distribute\SpotControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Distribute\SurfaceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InstrumentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PortfolioControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PredicateControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\RiskControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StandardStrategyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StrategyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TradeAlgorithmControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TradeGateControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BackTestingCommonLib\BackTestingCommonLib.csproj">
+      <Project>{89631850-33c2-4c88-ac09-d8469db3e900}</Project>
+      <Name>BackTestingCommonLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackTestingInterface\BackTestingInterface.csproj">
+      <Project>{356d766f-f92c-41e9-93f3-de6599b96955}</Project>
+      <Name>BackTestingInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLibForWPF\CommonLibForWPF.csproj">
+      <Project>{d95ea682-2ecd-42e6-9a19-4098828a07b0}</Project>
+      <Name>CommonLibForWPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{a184933b-92c1-44fb-be21-ae742be5b8ce}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarketDataSupport\MarketDataSupport\MarketDataSupport.csproj">
+      <Project>{ad38ca11-4c5c-4a52-b822-22e9329d34ee}</Project>
+      <Name>MarketDataSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportCommonLib\ReportCommonLib.csproj">
+      <Project>{4ab9468d-c727-4453-bb7c-73664849ec13}</Project>
+      <Name>ReportCommonLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pisces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pause.png" />
+    <Resource Include="Images\start.png" />
+    <Resource Include="Images\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\analyse project.png" />
+    <Resource Include="Images\backtesting project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\log.png" />
+    <Resource Include="Images\data maintenance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\distribute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\new.png" />
+    <Resource Include="Images\open.png" />
+    <Resource Include="Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Edit.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

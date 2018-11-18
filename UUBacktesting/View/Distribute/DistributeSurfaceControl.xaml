@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="UUBacktesting.View.Distribute.DistributeSurfaceControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UUBacktesting.View.Distribute"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataTemplate x:Key="dateAxisLabelTemplate">
+            <TextBlock Text="{Binding StringFormat={}{0:MM-dd HH:mm}}" Margin="3" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <telerik:RadBusyIndicator IsBusy="{Binding IsBusy}">
+        <Grid>
+            <telerik:RadCartesianChart3D >
+                <telerik:RadCartesianChart3D.Behaviors>
+                    <telerik:Chart3DTooltipBehavior></telerik:Chart3DTooltipBehavior>
+                    <telerik:Chart3DCameraBehavior />
+                </telerik:RadCartesianChart3D.Behaviors>
+                <telerik:RadCartesianChart3D.XAxis>
+                    <telerik:CategoricalAxis3D Title="Time" LabelInterval="2" LabelTemplate="{StaticResource dateAxisLabelTemplate}" />
+                </telerik:RadCartesianChart3D.XAxis>
+                <telerik:RadCartesianChart3D.ZAxis>
+                    <telerik:LinearAxis3D Title="Sigma"/>
+                </telerik:RadCartesianChart3D.ZAxis>
+                <telerik:RadCartesianChart3D.YAxis>
+                    <telerik:CategoricalAxis3D  Title="Name" />
+                </telerik:RadCartesianChart3D.YAxis>
+                <telerik:RadCartesianChart3D.Grid>
+                    <telerik:CartesianChart3DGrid XZStripLinesVisibility="Z"
+                                              YZStripLinesVisibility="Z"
+                                              XYStripLinesVisibility="Y"/>
+                </telerik:RadCartesianChart3D.Grid>
+                <telerik:RadCartesianChart3D.Series>
+                    <telerik:SurfaceSeries3D PointSize="6 6 6" XValueBinding="Time"  YValueBinding="Name" ZValueBinding="Value" ItemsSource="{Binding ValueList}">
+                        <telerik:SurfaceSeries3D.Colorizer>
+                            <telerik:SurfaceSeries3DValueGradientColorizer IsAbsolute="True">
+                                <telerik:SurfaceSeries3DValueGradientColorizer.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="#0D3C55" Offset="3" />
+                                        <GradientStop Color="#1395BA" Offset="4" />
+                                        <GradientStop Color="#A2B86C" Offset="5" />
+                                        <GradientStop Color="#EBC844" Offset="6" />
+                                        <GradientStop Color="#EF8B2C" Offset="7" />
+                                        <GradientStop Color="#F16C20" Offset="8" />
+                                        <GradientStop Color="#D94E1F" Offset="9" />
+                                        <GradientStop Color="#C02E1D" Offset="10" />
+                                    </GradientStopCollection>
+                                </telerik:SurfaceSeries3DValueGradientColorizer.GradientStops>
+                            </telerik:SurfaceSeries3DValueGradientColorizer>
+                        </telerik:SurfaceSeries3D.Colorizer>
+
+
+                    </telerik:SurfaceSeries3D>
+                </telerik:RadCartesianChart3D.Series>
+            </telerik:RadCartesianChart3D>
+
+        </Grid>
+    </telerik:RadBusyIndicator>
+</UserControl>
